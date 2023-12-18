@@ -3,6 +3,10 @@ let iFrameYT = null;
 const containerSize = { width: 0, height: 0 };
 const cardSize = { width: 0, height: 0 };
 
+const onWindowResize = (e) => {
+  console.log(e);
+  console.log(e.currentTarget);
+};
 const onTransitionStart = (e) => {
   const card = e.currentTarget;
   card.style.zIndex = 1;
@@ -30,8 +34,8 @@ const onClick = (e) => {
     title.style.backgroundColor = null;
     title.style.padding = null;
   } else {
-    title.style.backgroundColor = '#030303';
-    title.style.padding = '1rem';
+    title.style.backgroundColor = "cornflowerblue";
+    title.style.padding = "1rem";
     container.style.maxHeight = containerSize.height + "px";
     card.style.width = cardSize.width + "px";
     iFrameYT.style.width = window.innerWidth + "px";
@@ -55,6 +59,7 @@ const onClick = (e) => {
 };
 
 (function () {
+  window.addEventListener("resize", onWindowResize);
   document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", onClick);
     card.addEventListener("transitionstart", onTransitionStart);
@@ -64,7 +69,7 @@ const onClick = (e) => {
       cardSize.height = card.clientHeight;
       container = document.querySelector(".container");
       containerSize.height = container.clientHeight;
-      iFrameYT =  document.querySelector(".yt");
+      iFrameYT = document.querySelector(".yt");
     }
   });
 })();
