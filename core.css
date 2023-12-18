@@ -1,0 +1,88 @@
+:root {
+  --step--2: clamp(0.69rem, 0.84rem + -0.2, 1rem);
+  --step-0: clamp(1.2rem, 0.64rem + 2.78, 2rem);
+}
+body {
+  /* font-size: var(--step-0); */
+  background: url("/media/001.jpg") no-repeat border-box;
+  background-size: auto;
+  /* background-position-x: left; */
+  margin: 0;
+}
+
+.container {
+  width: min(90%, 1000px);
+  max-width: 1000px;
+  margin-inline: auto; /* left and right margin only */
+  /* outline: 1px solid pink; */
+  /* dynamic: top,bottom[1rem min]; static: left,right */
+  /* padding: max(3vh, 1rem) 1.5rem; */
+  /* columns: 3 | 20em; */
+  /* border: 1px solid red; */
+  position: absolute;
+  bottom: 5rem;
+  left: 0;
+  right: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  overflow: clip;
+  backdrop-filter: blur(0.5rem);
+  height: 200px;
+  border-radius: 1rem;
+  /* border: 1px solid red; */
+  cursor: pointer;
+  /* padding: 0.5rem; */
+  /* width: minmax(270px); */
+  transition-property: all;
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in;
+  /* transition-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035); */
+  /* transition-timing-function: cubic-bezier(0.91, -0.10, 0, 0.99); */
+}
+.yt {
+  transition-property: all;
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in;
+  width: -webkit-fill-available;
+}
+.video-container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in;
+}
+.card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.caption {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: center;
+  color: #fefefe;
+}
+.caption .title {
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+h2 {
+  /* min, optimal, max */
+  /* font-size: clamp(1rem, 10vw + 1rem, 3rem); */
+  font-size: var(--step-3);
+  line-height: 1;
+  /* column-span: all; */
+}
+
+h3 {
+  font-size: var(--step-2);
+}
