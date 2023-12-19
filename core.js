@@ -18,8 +18,11 @@ const onTransitionEnd = (e) => {
     card.style.height = null;
     card.style.zIndex = null;
     container.style.maxHeight = null;
-    iFrameYT.style.width = null;
-    iFrameYT.style.height = null;
+    const yt = card.querySelector(".yt");
+    if (yt) {
+      yt.style.width = null;
+      yt.style.height = null;
+    }
   }
 };
 
@@ -38,8 +41,11 @@ const onClick = (e) => {
     title.style.padding = "1rem";
     container.style.maxHeight = containerSize.height + "px";
     card.style.width = cardSize.width + "px";
-    iFrameYT.style.width = window.innerWidth + "px";
-    iFrameYT.style.height = window.innerHeight + "px";
+    const yt = card.querySelector(".yt");
+    if (yt) {
+      yt.style.width = window.innerWidth + "px";
+      yt.style.height = window.innerHeight + "px";
+    }
     //
     const coord = card.getBoundingClientRect();
     card.style.transform = `translate(-${Math.ceil(coord.x)}px, -${Math.ceil(
