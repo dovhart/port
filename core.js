@@ -37,7 +37,7 @@ const onClick = (e) => {
     title.style.backgroundColor = null;
     title.style.padding = null;
   } else {
-    title.style.backgroundColor = "cornflowerblue";
+    // title.style.backgroundColor = "cornflowerblue";
     title.style.padding = "1rem";
     container.style.maxHeight = containerSize.height + "px";
     card.style.width = cardSize.width + "px";
