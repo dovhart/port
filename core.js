@@ -1,11 +1,27 @@
+/* parallax effect */
+const parallax_els = document.querySelectorAll('.parallax');
+let xValue = 0, yValue = 0;
+window.addEventListener('mousemove', (e) => {
+  xValue = e.clientX - window.innerWidth/2;
+  yValue = e.clientY - window.innerHeight/2;
+
+  parallax_els.forEach((el)=>{
+    const speed = el.dataset.speed;
+    el.style.transform = `translateX(calc(-50% + ${-xValue * speed}px)) translateY(calc(-50% + ${yValue * speed}px))`;
+  })
+});
+
+
 let container = null;
-let iFrameYT = null;
 const containerSize = { width: 0, height: 0 };
 const cardSize = { width: 0, height: 0 };
 
 const onWindowResize = (e) => {
   console.log(e);
   console.log(e.currentTarget);
+  parallax_els.forEach((el)=>{
+    el.style.transform = null;
+  })
 };
 const onTransitionStart = (e) => {
   const card = e.currentTarget;
@@ -33,12 +49,12 @@ const onClick = (e) => {
     card.style.transform = null;
     card.style.width = cardSize.width + "px";
     card.style.height = null;
-    card.style.borderRadius = "1rem";
     title.style.backgroundColor = null;
     title.style.padding = null;
   } else {
+    console.log('go fullscreen:')
     // title.style.backgroundColor = "cornflowerblue";
-    title.style.padding = "1rem";
+    // title.style.padding = "1rem";
     container.style.maxHeight = containerSize.height + "px";
     card.style.width = cardSize.width + "px";
     const yt = card.querySelector(".yt");
@@ -48,12 +64,17 @@ const onClick = (e) => {
     }
     //
     const coord = card.getBoundingClientRect();
-    card.style.transform = `translate(-${Math.ceil(coord.x)}px, -${Math.ceil(
+    console.log('coord',coord)
+    // card.style.transform = `translate(-${Math.ceil(coord.x)}px, -${Math.ceil(
+    //   coord.y
+    // )}px)`;
+    card.style.transform = `translate(0px, -${Math.ceil(
       coord.y
     )}px)`;
     card.style.width = window.innerWidth + "px";
     card.style.height = window.innerHeight + "px";
     card.style.borderRadius = 0;
+    console.log('width',window.innerWidth,'height',window.innerHeight)
     //
     // card.style.height = cardSize.height + "px";
     // const x = window.innerWidth / 2 - size.width / 2;
@@ -66,6 +87,7 @@ const onClick = (e) => {
 
 (function () {
   window.addEventListener("resize", onWindowResize);
+
   document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", onClick);
     card.addEventListener("transitionstart", onTransitionStart);
@@ -73,9 +95,11 @@ const onClick = (e) => {
     if (!cardSize.width || !cardSize.height) {
       cardSize.width = card.clientWidth;
       cardSize.height = card.clientHeight;
+      console.log('cardSize',cardSize)
+
       container = document.querySelector(".container");
       containerSize.height = container.clientHeight;
-      iFrameYT = document.querySelector(".yt");
+      console.log('containerSize',containerSize)      
     }
   });
 })();

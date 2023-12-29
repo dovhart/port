@@ -7,11 +7,64 @@ html {
 }
 body {
   /* font-size: var(--step-0); */
-  background: url("media/001.jpg") no-repeat center center fixed;
-  background-size: cover;
-  /* background-position-x: left; */
+  /* background: url("/media/001.jpg") no-repeat center center fixed; */
+  /* background-size: cover; */
   margin: 0;
+  background: linear-gradient(#529edc, #7c8927);
+  /* background-image: url("/media/001.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: top; */
 }
+
+/* SECTIONS */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+main {
+  position: relative;
+  height: 100svh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* BG IMAGES */
+.bg-01 {
+  width: 130% !important;
+  height: 130% !important;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.bg-02 {
+  top: 53%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-53%);
+}
+.bg-03 {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.bg-04 {
+  height: 130% !important;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* PARALLAX */
+.parallax {
+  pointer-events: none;
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  /* transition: 0.45s; */
+}
+
 /* HEADER */
 .logo {
   display: flex;
@@ -40,6 +93,7 @@ body {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
 }
 
 .card {
@@ -52,7 +106,7 @@ body {
   /* padding: 0.5rem; */
   /* width: minmax(270px); */
   transition-property: all;
-  transition-duration: 0.7s;
+  transition-duration: 0.5s;
   transition-timing-function: ease-in;
   /* transition-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035); */
   /* transition-timing-function: cubic-bezier(0.91, -0.10, 0, 0.99); */
